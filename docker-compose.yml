@@ -1,0 +1,22 @@
+version: '3'
+services:
+  nfs-server:
+    build:
+      context: .
+      dockerfile: Dockerfile.nfs-server
+    volumes:
+      - sharedfolder:/sharedfolder
+    ports:
+      - "2049:2049"
+    privileged: true
+    restart: unless-stopped
+
+  nfs-client:
+    build:
+      context: .
+      dockerfile: Dockerfile.nfs-client
+    privileged: true
+    restart: unless-stopped
+
+volumes:
+  sharedfolder:
