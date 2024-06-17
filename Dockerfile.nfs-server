@@ -1,7 +1,0 @@
-FROM ubuntu:latest
-RUN apt-get update && \
-    apt-get install -y nfs-kernel-server && \
-    mkdir -p /sharedfolder && \
-    echo "/sharedfolder *(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
-EXPOSE 2049
-CMD ["sh", "-c", "service nfs-kernel-server start && tail -f /dev/null"]
