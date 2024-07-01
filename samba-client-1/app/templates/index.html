@@ -1,0 +1,16 @@
+<!-- app/templates/index.html -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Samba Client</title>
+  </head>
+  <body>
+    <h1>Uploaded Files</h1>
+    <ul>
+      {% for file in files %}
+        <li>{{ file }}</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
