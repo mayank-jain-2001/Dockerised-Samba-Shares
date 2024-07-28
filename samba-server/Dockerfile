@@ -20,4 +20,6 @@ RUN apt install python3-flask -y
 COPY app /app
 WORKDIR /app
 
+ENV FLASK_ENV=development
+
 CMD ["sh", "-c", "service smbd start && python3 app.py"]
