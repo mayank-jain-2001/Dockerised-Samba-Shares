@@ -6,7 +6,7 @@ EXPOSE 5000
 
 RUN apt install python3-flask -y
 
-RUN pip install pysmb==1.2.9.1
+RUN pip install pysmb==1.2.9.1 --break-system-packages
 
 COPY app /app
 WORKDIR /app
