@@ -1,0 +1,24 @@
+version: '2.22.0'
+
+services:
+  samba-server:
+    build:
+      context: ./samba-server
+    ports:
+      - "139:139"
+      - "445:445"
+      - "5000:5000"
+    container_name: samba-server
+  
+  samba-client-1:
+    build:
+      context: ./samba-client-1
+    ports:
+      - "5001:5000"
+    depends_on:
+      - samba-server
+    container_name: samba-client-1
+      
+networks:
+  default:
+    driver: bridge
