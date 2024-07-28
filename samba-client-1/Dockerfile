@@ -6,7 +6,11 @@ EXPOSE 5000
 
 RUN apt install python3-flask -y
 
+RUN pip install pysmb==1.2.9.1
+
 COPY app /app
 WORKDIR /app
+
+ENV FLASK_ENV=development
 
 CMD ["python3", "app.py"]
