@@ -17,7 +17,16 @@ services:
       - "5001:5000"
     depends_on:
       - samba-server
-    container_name: samba-client
+    container_name: samba-client-1
+
+  samba-client-2:
+    build:
+      context: ./samba-client
+    ports:
+      - "5002:5000"
+    depends_on:
+      - samba-server
+    container_name: samba-client-2
       
 networks:
   default:
