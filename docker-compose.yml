@@ -12,12 +12,12 @@ services:
   
   samba-client-1:
     build:
-      context: ./samba-client-1
+      context: ./samba-client
     ports:
       - "5001:5000"
     depends_on:
       - samba-server
-    container_name: samba-client-1
+    container_name: samba-client
       
 networks:
   default:
