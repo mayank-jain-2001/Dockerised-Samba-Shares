@@ -3,12 +3,55 @@
   <head>
     <meta charset="utf-8">
     <title>Samba Client</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: Arial, sans-serif;
+      }
+      h1 {
+        text-align: center;
+        margin-top: 20px;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+      li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 10px;
+      }
+      a {
+        text-decoration: none;
+        color: black;
+        margin-top: 5px;
+      }
+      .file-icon {
+        font-size: 50px;
+      }
+      .text-file::before {
+        content: "📄";
+      }
+      .image-file::before {
+        content: "🖼️";
+      }
+    </style>
   </head>
   <body>
     <h1>Files</h1>
     <ul>
       {% for file in files %}
         <li>
+          {% if file.endswith('.txt') %}
+            <div class="file-icon text-file"></div>
+          {% elif file.endswith('.jpg') or file.endswith('.png') %}
+            <div class="file-icon image-file"></div>
+          {% else %}
+            <div class="file-icon">❔</div>
+          {% endif %}
           <a href="{{ url_for('view_file', filename=file.strip()) }}">{{ file.strip() }}</a>
         </li>
       {% endfor %}
